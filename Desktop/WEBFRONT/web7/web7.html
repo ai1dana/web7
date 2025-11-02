@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Assignment</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f3f4f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2 {
+            color: #6c4eeb;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+
+        /* Container */
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Buttons */
+        .button {
+            background-color: #6c4eeb;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .button:hover {
+            background-color: #5b38c7;
+        }
+
+        /* Image */
+        #image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+            display: none;
+            max-height: 300px;
+        }
+
+        /* Text and Panels */
+        .panel {
+            display: none;
+            background-color: #e8e7f4;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+
+        .accordion {
+            background-color: #6c4eeb;
+            color: white;
+            padding: 14px;
+            text-align: left;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+            border: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .accordion:hover {
+            background-color: #5b38c7;
+        }
+
+        .active, .accordion:hover {
+            background-color: #5b38c7;
+        }
+
+        /* Form */
+        input[type="text"] {
+            padding: 10px;
+            width: 60%;
+            margin: 10px auto;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            display: block;
+        }
+
+        .form-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        /* Links */
+        #linkContainer {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #link {
+            color: #6c4eeb;
+            font-size: 18px;
+        }
+
+        /* Animations */
+        #box, #sequentialBox, #combinedBox {
+            width: 120px;
+            height: 120px;
+            background-color: #6a4c8c;
+            margin: 20px auto;
+            border-radius: 10px;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        #message {
+            background-color: #6c4eeb;
+            color: white;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>jQuery Assignment</h1>
+
+    <!-- Setup -->
+    <div>
+        <h2>Part 1: Setup</h2>
+        <button class="button" id="changeText">Change Text</button>
+        <div id="message" class="info">Hello, World!</div>
+    </div>
+
+    <!--  Visibility Methods -->
+    <div>
+        <h2>Part 2: Visibility Methods</h2>
+        <button class="button" id="hide">Hide</button>
+        <button class="button" id="show">Show</button>
+        <p id="paragraph">I am aiiDana</p>
+    </div>
+
+    <!--  Fade Methods -->
+    <div>
+        <h2>Part 3: Fade Methods</h2>
+        <img id="image" src="cat.jpg" alt="Cute Cat">
+        <button class="button" id="fadeIn">Fade In</button>
+        <button class="button" id="fadeOut">Fade Out</button>
+    </div>
+
+    <!-- Slide Methods -->
+    <div>
+        <h2>Part 4: Slide Methods</h2>
+        <button class="button" id="togglePanel">Toggle Panel</button>
+        <div id="panel">This is a collapsible panel.</div>
+    </div>
+
+    <!--  Add & Remove Elements -->
+    <div>
+        <h2>Part 5: Add & Remove Elements</h2>
+        <button class="button" id="addItem">Add Item</button>
+        <button class="button" id="removeItem">Remove Item</button>
+        <ul id="itemList">
+            <li>Item 1</li>
+        </ul>
+    </div>
+
+    <!--  Modifying Attributes -->
+    <div>
+        <h2>Part 6: Modifying Attributes</h2>
+        <img id="imageSrc" src="cat1.webp" alt="Placeholder Image">
+        <button class="button" id="changeImage">Change Image</button>
+
+        <div id="linkContainer">
+            <a id="link" href="cat2.webp" target="_blank">Visit Example</a>
+            <button class="button" id="changeLink">Change Link</button>
+        </div>
+    </div>
+
+    <!-- Form Interaction -->
+    <div class="form-container">
+        <h2>Part 7: Form Interaction</h2>
+        <input type="text" id="name" placeholder="Enter your name">
+        <input type="text" id="email" placeholder="Enter your email">
+        <p id="nameDisplay">Name: </p>
+        <p id="emailDisplay">Email: </p>
+    </div>
+
+    <!-- Basic Animation -->
+    <div>
+        <h2>Part 8: Basic Animation</h2>
+        <div id="box"></div>
+        <button class="button" id="animateBox">Animate Box</button>
+    </div>
+
+    <!-- Sequential Animations -->
+    <div>
+        <h2>Part 9: Sequential Animations</h2>
+        <div id="sequentialBox"></div>
+        <button class="button" id="animateSequential">Animate Sequentially</button>
+    </div>
+
+    <!--  Combined Animation -->
+    <div>
+        <h2>Part 10: Combined Animation</h2>
+        <div id="combinedBox"></div>
+        <button class="button" id="animateCombined">Combine Animation</button>
+    </div>
+
+    <!-- Mini Project (Accordion) -->
+    <div>
+        <h2>Part 11: Accordion Menu</h2>
+        <button class="accordion">Section 1</button>
+        <div class="panel">
+            <p>This is section 1 content.</p>
+        </div>
+
+        <button class="accordion">Section 2</button>
+        <div class="panel">
+            <p>This is section 2 content.</p>
+        </div>
+
+        <button class="accordion">Section 3</button>
+        <div class="panel">
+            <p>This is section 3 content.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        //  Change Text
+        $('#changeText').click(function() {
+            $('#message').text('New Text!').css('color', 'red');
+        });
+
+        // Task 2: Visibility Methods
+        $('#hide').click(function() {
+            $('#paragraph').hide();
+        });
+        $('#show').click(function() {
+            $('#paragraph').show();
+        });
+
+        // Fade Methods
+        $('#fadeIn').click(function() {
+            $('#image').fadeIn();
+        });
+        $('#fadeOut').click(function() {
+            $('#image').fadeOut();
+        });
+
+        //  Slide Methods
+        $('#togglePanel').click(function() {
+            $('#panel').slideToggle();
+        });
+
+        // Add & Remove Elements
+        $('#addItem').click(function() {
+            $('#itemList').append('<li>New Item</li>');
+        });
+        $('#removeItem').click(function() {
+            $('#itemList li:last').remove();
+        });
+
+        // Modifying Attributes
+        $('#changeImage').click(function() {
+            $('#imageSrc').attr('src', 'https://placekitten.com/500/300');
+            $('#imageSrc').fadeIn();
+        });
+
+        // Change the link href dynamically when the button is clicked
+        $('#changeLink').click(function() {
+            $('#link').attr('href', 'https://www.newlink.com');
+            $('#link').text('Visit New Link');
+        });
+
+        //  Form Interaction
+        $('#name').keyup(function() {
+            $('#nameDisplay').text('Name: ' + $(this).val());
+        });
+        $('#email').keyup(function() {
+            $('#emailDisplay').text('Email: ' + $(this).val());
+        });
+
+        // Basic Animation
+        $('#animateBox').click(function() {
+            $('#box').animate({
+                width: '200px',
+                height: '200px',
+                left: '100px'
+            });
+        });
+
+        // Sequential Animations
+        $('#animateSequential').click(function() {
+            $('#sequentialBox').animate({ left: '200px' })
+                .animate({ top: '100px' })
+                .animate({ width: '50px' })
+                .animate({ left: '0px', top: '0px', width: '100px' });
+        });
+
+        // Combined Animation
+        $('#animateCombined').click(function() {
+            $('#combinedBox').animate({
+                left: '200px',
+                width: '200px',
+                height: '200px',
+                opacity: 0.5
+            });
+        });
+
+        //  Accordion Menu
+        $('.accordion').click(function() {
+            $(this).next('.panel').slideToggle();
+            $(this).toggleClass('active');
+        });
+    });
+</script>
+
+</body>
+</html>
